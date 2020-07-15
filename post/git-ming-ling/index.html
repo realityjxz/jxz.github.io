@@ -1,0 +1,405 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>git命令 | Gridea</title>
+<link rel="shortcut icon" href="https://realityjxz.github.io/favicon.ico?v=1594822854067">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://realityjxz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="git命令 | Gridea - Atom Feed" href="https://realityjxz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="常用 Git 命令清单
+作者： 阮一峰
+日期： 2015年12月 9日
+我每天使用 Git ，但是很多命令记不住。
+一般来说，日常使用只要记住下图6个命令，就可以了。但是熟练使用，恐怕要记住60～100个命令。
+
+下面是我整理的常用 Git..." />
+    <meta name="keywords" content="git" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://realityjxz.github.io">
+  <img class="avatar" src="https://realityjxz.github.io/images/avatar.png?v=1594822854067" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              git命令
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-07-20
+              </span>
+              <span>
+                7 min read
+              </span>
+              
+                <a href="https://realityjxz.github.io/tag/Idt-HtRLkC/" class="post-tag">
+                  # git
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="常用-git-命令清单">常用 Git 命令清单</h1>
+<p><strong>作者： 阮一峰</strong></p>
+<p><em>日期： 2015年12月 9日</em></p>
+<p>我每天使用 Git ，但是很多命令记不住。</p>
+<p>一般来说，日常使用只要记住下图6个命令，就可以了。但是熟练使用，恐怕要记住60～100个命令。</p>
+<figure data-type="image" tabindex="1"><img src="https://realityjxz.github.io/post-images/1563630267136.png" alt="" loading="lazy"></figure>
+<p>下面是我整理的常用 Git 命令清单。几个专用名词的译名如下。</p>
+<p>Workspace：工作区<br>
+Index / Stage：暂存区<br>
+Repository：仓库区（或本地仓库）<br>
+Remote：远程仓库</p>
+<h1 id="一-新建代码库">一、新建代码库</h1>
+<p>#在当前目录新建一个Git代码库<br>
+$ git init</p>
+<p>#新建一个目录，将其初始化为Git代码库<br>
+$ git init [project-name]</p>
+<p>#下载一个项目和它的整个代码历史<br>
+$ git clone [url]</p>
+<h1 id="二-配置">二、配置</h1>
+<p>Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</p>
+<p>#显示当前的Git配置<br>
+$ git config --list</p>
+<p>#编辑Git配置文件<br>
+$ git config -e [--global]</p>
+<p>#设置提交代码时的用户信息<br>
+$ git config [--global] user.name &quot;[name]&quot;<br>
+$ git config [--global] user.email &quot;[email address]&quot;</p>
+<h1 id="三-增加删除文件">三、增加/删除文件</h1>
+<p>#添加指定文件到暂存区<br>
+$ git add [file1] [file2] ...</p>
+<p>#添加指定目录到暂存区，包括子目录<br>
+$ git add [dir]</p>
+<p>#添加当前目录的所有文件到暂存区<br>
+$ git add .</p>
+<p>#添加每个变化前，都会要求确认<br>
+#对于同一个文件的多处变化，可以实现分次提交<br>
+$ git add -p</p>
+<p>#删除工作区文件，并且将这次删除放入暂存区<br>
+$ git rm [file1] [file2] ...</p>
+<p>#停止追踪指定文件，但该文件会保留在工作区<br>
+$ git rm --cached [file]</p>
+<p>#改名文件，并且将这个改名放入暂存区<br>
+$ git mv [file-original] [file-renamed]</p>
+<h1 id="四-代码提交">四、代码提交</h1>
+<p>#提交暂存区到仓库区<br>
+$ git commit -m [message]</p>
+<p>#提交暂存区的指定文件到仓库区<br>
+$ git commit [file1] [file2] ... -m [message]</p>
+<p>#提交工作区自上次commit之后的变化，直接到仓库区<br>
+$ git commit -a</p>
+<p>#提交时显示所有diff信息<br>
+$ git commit -v</p>
+<p>#使用一次新的commit，替代上一次提交<br>
+#如果代码没有任何新变化，则用来改写上一次commit的提交信息<br>
+$ git commit --amend -m [message]</p>
+<p>#重做上一次commit，并包括指定文件的新变化<br>
+$ git commit --amend [file1] [file2] ...</p>
+<h1 id="五-分支">五、分支</h1>
+<p>#列出所有本地分支<br>
+$ git branch</p>
+<p>#列出所有远程分支<br>
+$ git branch -r</p>
+<p>#列出所有本地分支和远程分支<br>
+$ git branch -a</p>
+<p>#新建一个分支，但依然停留在当前分支<br>
+$ git branch [branch-name]</p>
+<p>#新建一个分支，并切换到该分支<br>
+$ git checkout -b [branch]</p>
+<p>#新建一个分支，指向指定commit<br>
+$ git branch [branch] [commit]</p>
+<p>#新建一个分支，与指定的远程分支建立追踪关系<br>
+$ git branch --track [branch] [remote-branch]</p>
+<p>#切换到指定分支，并更新工作区<br>
+$ git checkout [branch-name]</p>
+<p>#切换到上一个分支<br>
+$ git checkout -</p>
+<p>#建立追踪关系，在现有分支与指定的远程分支之间<br>
+$ git branch --set-upstream [branch] [remote-branch]</p>
+<p>#合并指定分支到当前分支<br>
+$ git merge [branch]</p>
+<p>#选择一个commit，合并进当前分支<br>
+$ git cherry-pick [commit]</p>
+<p>#删除分支<br>
+$ git branch -d [branch-name]</p>
+<p>#删除远程分支<br>
+$ git push origin --delete [branch-name]<br>
+$ git branch -dr [remote/branch]</p>
+<h1 id="六-标签">六、标签</h1>
+<p>#列出所有tag<br>
+$ git tag</p>
+<p>#新建一个tag在当前commit<br>
+$ git tag [tag]</p>
+<p>#新建一个tag在指定commit<br>
+$ git tag [tag] [commit]</p>
+<p>#删除本地tag<br>
+$ git tag -d [tag]</p>
+<p>#删除远程tag<br>
+$ git push origin :refs/tags/[tagName]</p>
+<p>#查看tag信息<br>
+$ git show [tag]</p>
+<p>#提交指定tag<br>
+$ git push [remote] [tag]</p>
+<p>#提交所有tag<br>
+$ git push [remote] --tags</p>
+<p>#新建一个分支，指向某个tag<br>
+$ git checkout -b [branch] [tag]</p>
+<h1 id="七-查看信息">七、查看信息</h1>
+<p>#显示有变更的文件<br>
+$ git status</p>
+<p>#显示当前分支的版本历史<br>
+$ git log</p>
+<p>#显示commit历史，以及每次commit发生变更的文件<br>
+$ git log --stat</p>
+<p>#搜索提交历史，根据关键词<br>
+$ git log -S [keyword]</p>
+<p>#显示某个commit之后的所有变动，每个commit占据一行<br>
+$ git log [tag] HEAD --pretty=format:%s</p>
+<p>#显示某个commit之后的所有变动，其&quot;提交说明&quot;必须符合搜索条件<br>
+$ git log [tag] HEAD --grep feature</p>
+<p>#显示某个文件的版本历史，包括文件改名<br>
+$ git log --follow [file]<br>
+$ git whatchanged [file]</p>
+<p>#显示指定文件相关的每一次diff<br>
+$ git log -p [file]</p>
+<p>#显示过去5次提交<br>
+$ git log -5 --pretty --oneline</p>
+<p>#显示所有提交过的用户，按提交次数排序<br>
+$ git shortlog -sn</p>
+<p>#显示指定文件是什么人在什么时间修改过<br>
+$ git blame [file]</p>
+<p>#显示暂存区和工作区的差异<br>
+$ git diff</p>
+<p>#显示暂存区和上一个commit的差异<br>
+$ git diff --cached [file]</p>
+<p>#显示工作区与当前分支最新commit之间的差异<br>
+$ git diff HEAD</p>
+<p>#显示两次提交之间的差异<br>
+$ git diff [first-branch]...[second-branch]</p>
+<p>#显示今天你写了多少行代码<br>
+$ git diff --shortstat &quot;@{0 day ago}&quot;</p>
+<p>#显示某次提交的元数据和内容变化<br>
+$ git show [commit]</p>
+<p>#显示某次提交发生变化的文件<br>
+$ git show --name-only [commit]</p>
+<p>#显示某次提交时，某个文件的内容<br>
+$ git show [commit]:[filename]</p>
+<p>#显示当前分支的最近几次提交<br>
+$ git reflog</p>
+<h1 id="八-远程同步">八、远程同步</h1>
+<p>#下载远程仓库的所有变动<br>
+$ git fetch [remote]</p>
+<p>#显示所有远程仓库<br>
+$ git remote -v</p>
+<p>#显示某个远程仓库的信息<br>
+$ git remote show [remote]</p>
+<p>#增加一个新的远程仓库，并命名<br>
+$ git remote add [shortname] [url]</p>
+<p>#取回远程仓库的变化，并与本地分支合并<br>
+$ git pull [remote] [branch]</p>
+<p>#上传本地指定分支到远程仓库<br>
+$ git push [remote] [branch]</p>
+<p>#强行推送当前分支到远程仓库，即使有冲突<br>
+$ git push [remote] --force</p>
+<p>#推送所有分支到远程仓库<br>
+$ git push [remote] --all</p>
+<h1 id="九-撤销">九、撤销</h1>
+<p>#恢复暂存区的指定文件到工作区<br>
+$ git checkout [file]</p>
+<p>#恢复某个commit的指定文件到暂存区和工作区<br>
+$ git checkout [commit] [file]</p>
+<p>#恢复暂存区的所有文件到工作区<br>
+$ git checkout .</p>
+<p>#重置暂存区的指定文件，与上一次commit保持一致，但工作区不变<br>
+$ git reset [file]</p>
+<p>#重置暂存区与工作区，与上一次commit保持一致<br>
+$ git reset --hard</p>
+<p>#重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变<br>
+$ git reset [commit]</p>
+<p>#重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致<br>
+$ git reset --hard [commit]</p>
+<p>#重置当前HEAD为指定commit，但保持暂存区和工作区不变<br>
+$ git reset --keep [commit]</p>
+<p>#新建一个commit，用来撤销指定commit<br>
+#后者的所有变化都将被前者抵消，并且应用到当前分支<br>
+$ git revert [commit]</p>
+<p>#暂时将未提交的变化移除，稍后再移入<br>
+$ git stash<br>
+$ git stash pop</p>
+<h1 id="十-其他">十、其他</h1>
+<p>#生成一个可供发布的压缩包<br>
+$ git archive<br>
+（完）</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%B8%B8%E7%94%A8-git-%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95">常用 Git 命令清单</a></li>
+<li><a href="#%E4%B8%80-%E6%96%B0%E5%BB%BA%E4%BB%A3%E7%A0%81%E5%BA%93">一、新建代码库</a></li>
+<li><a href="#%E4%BA%8C-%E9%85%8D%E7%BD%AE">二、配置</a></li>
+<li><a href="#%E4%B8%89-%E5%A2%9E%E5%8A%A0%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6">三、增加/删除文件</a></li>
+<li><a href="#%E5%9B%9B-%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4">四、代码提交</a></li>
+<li><a href="#%E4%BA%94-%E5%88%86%E6%94%AF">五、分支</a></li>
+<li><a href="#%E5%85%AD-%E6%A0%87%E7%AD%BE">六、标签</a></li>
+<li><a href="#%E4%B8%83-%E6%9F%A5%E7%9C%8B%E4%BF%A1%E6%81%AF">七、查看信息</a></li>
+<li><a href="#%E5%85%AB-%E8%BF%9C%E7%A8%8B%E5%90%8C%E6%AD%A5">八、远程同步</a></li>
+<li><a href="#%E4%B9%9D-%E6%92%A4%E9%94%80">九、撤销</a></li>
+<li><a href="#%E5%8D%81-%E5%85%B6%E4%BB%96">十、其他</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://realityjxz.github.io/post/niu-ke-wang-mian-shi-kao-dian-dao-tu/">
+              <h3 class="post-title">
+                牛客网-面试考点导图
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'bb1344bae2b0e635941e',
+    clientSecret: '2a897c3d67d05913d81a1697b9b75cbc0d59ae02',
+    repo: 'realityjxz.github.io',
+    owner: ' realityjxz',
+    admin: [' realityjxz'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://realityjxz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

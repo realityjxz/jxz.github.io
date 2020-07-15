@@ -1,0 +1,249 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vs code配置python | Gridea</title>
+<link rel="shortcut icon" href="https://realityjxz.github.io/favicon.ico?v=1594822854067">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://realityjxz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="vs code配置python | Gridea - Atom Feed" href="https://realityjxz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="安装 Python
+推荐安装 Anaconda
+我这里推荐大家安装 Anaconda。Anaconda 是 Python 的一个发行版，用于进行大规模数据处理、预测分析，和科学计算，致力于简化包的管理和部署。Anaconda 使用软件包管理..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://realityjxz.github.io">
+  <img class="avatar" src="https://realityjxz.github.io/images/avatar.png?v=1594822854067" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vs code配置python
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-06-10
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="安装-python">安装 Python</h1>
+<h2 id="推荐安装-anaconda">推荐安装 Anaconda</h2>
+<p>我这里推荐大家安装 Anaconda。Anaconda 是 Python 的一个发行版，用于进行大规模数据处理、预测分析，和科学计算，致力于简化包的管理和部署。Anaconda 使用软件包管理系统 Conda 进行包管理。Anaconda 官网上对 Anaconda 的描述是最受欢迎的 Python 数据科学平台。<br>
+  对于初学者来说，刚开始需要安装很多东西，如果你不想这么麻烦，那么 Anaconda 一定是你的首选，它自带了一堆 Python 常用库，而它的包管理系统对初学者又非常的友好，可以轻松实现 Python中 的各种包。</p>
+<h2 id="如何安装-anaconda">如何安装 Anaconda</h2>
+<p>先去官网下载，选择你的操作系统所对应的版本，并选择你的 Python 版本（博主用得的是 Python3）。<br>
+  下载完成后，点击安装即可。这里有几点要强调一下：</p>
+<ol>
+<li>配置环境变量。一定要勾选 Add Anaconda to my PATH environment variable，将 Anaconda 添加到环境变量，这样 VSCode 的插件才能找到 Python 环境（如果忘勾选了，也可以安装完后自己手动添加到环境变量里）。</li>
+<li>将 Anaconda 设为默认的 Python 环境。勾选 Register Anaconda as my default Python 3.7。<br>
+3.安装完成后会提示我们是否安装 VSCode , 我这里选择跳过，VSCode 待会我们自己装。<br>
+  至此 Anaconda 已经安装完成。装完后运行 CMD，输入 conda --version 命令看看是否装好了：</li>
+</ol>
+<pre><code>$ conda --version
+conda 4.5.11
+</code></pre>
+<p>如果出现版本号如 4.5.11，那么说明安装成功（只要出现数字即可，不需要和博主的一样）。再运行 conda activate 就进入 Anaconda 环境。</p>
+<h2 id="安装-python-插件">安装 Python 插件</h2>
+<p>在 VSCode 中搜索扩展 Python，如下图：</p>
+<p><img src="https://realityjxz.github.io/post-images/1591718826152.png" alt="" loading="lazy"><br>
+  安装完成后需要重新加载 VSCode 使插件生效。<br>
+<img src="https://realityjxz.github.io/post-images/1591718859237.png" alt="" loading="lazy"><br>
+配置 Python 环境<br>
+  在 VSCode 中点击状态栏左下角的 Python 图标：<br>
+<img src="https://realityjxz.github.io/post-images/1591718864285.png" alt="" loading="lazy"></p>
+<p>然后选择 Python 解释器（博主电脑上装有三中解释器），这里博主选择我们刚才安装好的 Anaconda（第三个）：</p>
+<h2 id="错误提示和格式化">错误提示和格式化</h2>
+<p>Python 默认的语法提示工具是 PyLint，也可以选择其他的 linter 工具，比如 flake8。flake8 是 Python 官方发布的一款静态代码检查工具，如果想使用它的话首先在 Anaconda 的命令行工具中用 pip install flake8 安装；另外，在保存代码的时候 VSCode 可以自动进行 code formatting ，这个功能默认是关闭的且工具是 autopep8 , 如果想使用 yafp，则继续在命令行工具中用命令 pip install yapf 安装。<br>
+  安装好这两个工具之后在 VSCode 的配置文件中进行设置：</p>
+<pre><code>&quot;python.linting.enabled&quot;: true
+&quot;python.linting.flake8Enabled&quot;: true,
+&quot;python.formatting.provider&quot;: &quot;yapf&quot;
+</code></pre>
+<h2 id="anaconda-extension-pack-插件">Anaconda Extension Pack 插件</h2>
+<p>这是一款 Anaconda 的扩展包，可增强使用 VSCode 的 Anaconda 的体验（强烈建议安装）。</p>
+<h2 id="测试">测试</h2>
+<p>测试我们配置是否正确：</p>
+<p>新建一个文件夹 test，在 test 里新建一个 test.py 文件；<br>
+用 VSCode 打开 test 文件夹；<br>
+打开 test.py 写入如下代码</p>
+<pre><code>print('Hello, world!') //python3版本
+</code></pre>
+<p>运行方法：<br>
+全选代码，然后 SHIFT+ENTER。<br>
+CTRL+~ 调出终端，输入 python test.py 回车运行文件.</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%AE%89%E8%A3%85-python">安装 Python</a>
+<ul>
+<li><a href="#%E6%8E%A8%E8%8D%90%E5%AE%89%E8%A3%85-anaconda">推荐安装 Anaconda</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85-anaconda">如何安装 Anaconda</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85-python-%E6%8F%92%E4%BB%B6">安装 Python 插件</a></li>
+<li><a href="#%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA%E5%92%8C%E6%A0%BC%E5%BC%8F%E5%8C%96">错误提示和格式化</a></li>
+<li><a href="#anaconda-extension-pack-%E6%8F%92%E4%BB%B6">Anaconda Extension Pack 插件</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95">测试</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://realityjxz.github.io/post/bo-ke-wang-zhi/">
+              <h3 class="post-title">
+                博客网址
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'bb1344bae2b0e635941e',
+    clientSecret: '2a897c3d67d05913d81a1697b9b75cbc0d59ae02',
+    repo: 'realityjxz.github.io',
+    owner: ' realityjxz',
+    admin: [' realityjxz'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://realityjxz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
